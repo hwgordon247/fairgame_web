@@ -1,56 +1,28 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { getAllTasks, postNewTask } from '../redux/reducer';
-import Task from './Task';
+import { setExampleVariable } from '../redux/reducer';
+
 class Home extends Component {
-  constructor(props){
+
+  constructor(props) {
     super(props);
+    this.props = props;
+    this.click = this.click.bind(this);
   }
-  componentDidMount(){
-    getAllTasks();
+
+  click() {
+    this.props.setExampleVariable('1 more week');
   }
+
   render() {
     return (
       <div>
-      <div className="container">
-        <div className="row">
-          <div className="col-xs-12">
-           <h1>Cosmic To-Do App!!</h1>
-            <form onSubmit={evt => {
-               evt.preventDefault();
-               this.props.postNewTask(evt.target.taskName.value);
-               evt.target.taskName.value = "";
-              }
-             }>
-              <div className="form-group">
-              <label for="exampleInputEmail1">Add New To-Do</label>
-              <input name="taskName" placeholder="Enter new task" />
-              </div>
-              <button type="submit">Ass Hat</button>
-            </form>
-          </div>
-        </div>
+        <div> {this.props.variable} </div>
+        <button onClick={this.click}> Click you shit </button>
       </div>
-      <div className="container">
-        <div className="row">
-          <div className="col-xs-12">
-            <h3>Lets get some work done!</h3>
-          </div>
-        </div>
-      </div>
-      <div className="container">
-        {
-          this.props.tasks && this.props.tasks.map((task) => {
-            return (
-              <Task key={task._id} Obj={task} isComplete={task.metafields[0].value} Name={task.title}/>
-            )
-          })
-        }
-      </div>
-      </div>
-    )
+    );
   }
 }
-const mapState = ({tasks}) => ({tasks});
-const mapDispatch = {getAllTasks, postNewTask};
+const mapState = ({ variable }) => ({ variable });
+const mapDispatch = { setExampleVariable };
 export default connect(mapState, mapDispatch)(Home);
