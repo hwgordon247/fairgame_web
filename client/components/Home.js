@@ -12,10 +12,9 @@ class Home extends Component {
       items: []
     };
     this.click = this.click.bind(this);
-    this.getItems();
   }
 
-  getItems() {
+  componentWillMount() {
     ItemService.getItems((error, response) => {
       if (error) console.log(error);
       this.setState({
@@ -40,8 +39,8 @@ class Home extends Component {
 
     return (
       <div>
-        <div> {this.props.variable} </div>
-        <button onClick={this.click}> Click you shitbag </button>
+        <h1>Fairgame</h1>
+        <h4> All dem animals: </h4>
         <div>{listItems}</div>
       </div>
     );

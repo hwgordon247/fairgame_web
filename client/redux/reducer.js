@@ -6,7 +6,7 @@ export function setExampleVariable(variable) {
 
 const initialState = {
   variable: 'a girl has no name',
-  random: 8,
+  random: 8
 };
 
 const reducer = (state = initialState, action) => {
@@ -14,7 +14,7 @@ const reducer = (state = initialState, action) => {
     case SET_EXAMPLE_VARIABLE :
       return {
         ...state,
-        variable: action.variable,
+        variable: action.variable
       };
     default:
       return state;

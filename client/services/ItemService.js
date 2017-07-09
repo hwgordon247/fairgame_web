@@ -12,4 +12,4 @@ class ItemService {
   }
 }
 
-module.exports = new ItemService();
+export default new ItemService();
