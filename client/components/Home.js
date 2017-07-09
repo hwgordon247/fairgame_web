@@ -1,25 +1,27 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import axios from 'axios';
 import { setExampleVariable } from '../redux/reducer';
+import ItemService from '../services/ItemService';
 
 class Home extends Component {
 
   constructor(props) {
     super(props);
     this.props = props;
+    this.state = {
+      items: []
+    };
     this.click = this.click.bind(this);
     this.getItems();
   }
 
   getItems() {
-    axios.get('http://localhost:5000/items')
-      .then((response) => {
-        console.log(response);
-      })
-      .catch((error) => {
-        console.log(error);
+    ItemService.getItems((error, response) => {
+      if (error) console.log(error);
+      this.setState({
+        items: response.data
       });
+    });
   }
 
   click() {
@@ -27,10 +29,20 @@ class Home extends Component {
   }
 
   render() {
+    const listItems = this.state.items.map((item, index) => {
+      return (
+        <div key={index}>
+          <div>{item.name}</div>
+          <div>{item.description}</div>
+        </div>
+      );
+    });
+
     return (
       <div>
         <div> {this.props.variable} </div>
         <button onClick={this.click}> Click you shitbag </button>
+        <div>{listItems}</div>
       </div>
     );
   }

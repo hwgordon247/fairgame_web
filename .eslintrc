@@ -5,7 +5,9 @@
     "padded-blocks": 0,
     "class-methods-use-this": [0],
     "react/prop-types": [0],
-    "comma-dangle": ["error", {"functions": "ignore"}]
+    "comma-dangle": ["error", {"functions": "ignore"}],
+    "arrow-body-style": 0,
+    "react/no-array-index-key": 0
   },
   "env": {
     "jest": true
