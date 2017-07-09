@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import axios from 'axios';
 import { setExampleVariable } from '../redux/reducer';
 
 class Home extends Component {
@@ -8,6 +9,17 @@ class Home extends Component {
     super(props);
     this.props = props;
     this.click = this.click.bind(this);
+    this.getItems();
+  }
+
+  getItems() {
+    axios.get('http://localhost:5000/items')
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }
 
   click() {
