@@ -4,6 +4,10 @@
     "react/jsx-filename-extension": [0],
     "padded-blocks": 0,
     "class-methods-use-this": [0],
-    "react/prop-types": [0]
+    "react/prop-types": [0],
+    "comma-dangle": ["error", {"functions": "ignore"}]
+  },
+  "env": {
+    "jest": true
   }
 }

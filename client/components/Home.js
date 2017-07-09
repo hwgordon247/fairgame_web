@@ -18,7 +18,7 @@ class Home extends Component {
     return (
       <div>
         <div> {this.props.variable} </div>
-        <button onClick={this.click}> Click you shit </button>
+        <button onClick={this.click}> Click you shitbag </button>
       </div>
     );
   }
