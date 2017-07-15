@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import RegisterService from '../services/RegisterService';
 
 class Register extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       email: '',
       username: '',
@@ -32,7 +32,8 @@ class Register extends Component {
     RegisterService.registerUser(this.state.email, this.state.username, this.state.password,
       (error, response) => {
         if (error) console.log(error);
-        console.log(response);
+        localStorage.setItem('token', response.data.token);
+        this.props.history.push('/profile');
       });
     event.preventDefault();
   }
