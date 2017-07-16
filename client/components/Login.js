@@ -25,9 +25,13 @@ class Login extends React.Component {
   handleSubmit(event) {
     LoginService.loginUser(this.state.username, this.state.password,
       (error, response) => {
-        if (error) console.log(error);
-        localStorage.setItem('token', response.data.token);
-        history.push('/profile');
+        if (error) {
+          console.log(error);
+        } else {
+          console.log('REEEASSKKK')
+          localStorage.setItem('token', response.data.token);
+          history.push('/profile');
+        }
       });
     event.preventDefault();
   }
