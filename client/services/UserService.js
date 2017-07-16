@@ -1,5 +1,6 @@
-import axios from 'axios';
+import HttpService from './HttpService';
 import history from '../util/history';
+import { apiUrl } from '../config';
 
 class UserService {
   getCurrentUser(cb) {
@@ -7,18 +8,25 @@ class UserService {
     if (!token) {
       history.push('/login');
     } else {
-      axios({
+      const requestObject = {
         method: 'GET',
-        url: 'http://localhost:5000/user',
+        url: `${apiUrl}/user`,
         headers: {
           authtoken: token
         }
-      }).then((response) => {
-        cb(null, response);
-      }).catch((error) => {
-        cb(error, null);
-      });
+      };
+      this._makeRequest(requestObject, cb);
     }
+  }
+
+  _makeRequest(requestObject, cb) {
+    HttpService.request(requestObject, (error, response) => {
+      if (error) {
+        cb(error, null);
+      } else {
+        cb(null, response);
+      }
+    });
   }
 }
 

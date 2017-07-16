@@ -1,15 +1,25 @@
-import axios from 'axios';
+import HttpService from './HttpService';
+import { apiUrl } from '../config';
 
 class ItemService {
   getItems(cb) {
-    axios.get('http://localhost:5000/items')
-      .then((response) => {
-        cb(null, response);
-      })
-      .catch((error) => {
+    const requestObject = {
+      method: 'GET',
+      url: `${apiUrl}/items`
+    };
+    this._makeRequest(requestObject, cb);
+  }
+
+  _makeRequest(requestObject, cb) {
+    HttpService.request(requestObject, (error, response) => {
+      if (error) {
         cb(error, null);
-      });
+      } else {
+        cb(null, response);
+      }
+    });
   }
 }
+
 
 export default new ItemService();

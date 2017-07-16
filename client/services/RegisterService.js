@@ -1,10 +1,11 @@
 import HttpService from './HttpService';
+import { apiUrl } from '../config';
 
 class RegisterService {
   registerUser(email, username, password, cb) {
     const requestObject = {
       method: 'POST',
-      url: 'http://localhost:5000/register',
+      url: `${apiUrl}/register`,
       data: { username, email, password }
     };
     this._makeRequest(requestObject, cb);
