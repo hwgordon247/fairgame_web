@@ -4,8 +4,8 @@ import RegisterService from '../services/RegisterService';
 import history from '../util/history';
 
 class Register extends Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
     this.state = {
       email: '',
       username: '',

@@ -1,11 +1,12 @@
 import HttpService from './HttpService';
 import { apiUrl } from '../config';
 
-class ItemService {
-  getItems(cb) {
+class LoginService {
+  loginUser(username, password, cb) {
     const requestObject = {
-      method: 'GET',
-      url: `${apiUrl}/items`
+      method: 'POST',
+      url: `${apiUrl}/login`,
+      data: { username, password }
     };
     this._makeRequest(requestObject, cb);
   }
@@ -21,4 +22,4 @@ class ItemService {
   }
 }
 
-export default new ItemService();
+export default new LoginService();
