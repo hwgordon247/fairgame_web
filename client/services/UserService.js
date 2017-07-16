@@ -2,11 +2,13 @@ import axios from 'axios';
 
 class UserService {
   getCurrentUser(cb) {
+    const token = localStorage.getItem('token');
+    if (!token) 
     axios({
       method: 'GET',
       url: 'http://localhost:5000/user',
       headers: {
-        authtoken: localStorage.getItem('token')
+        authtoken: token
       }
     }).then((response) => {
       cb(null, response);

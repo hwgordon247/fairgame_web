@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
+
 import RegisterService from '../services/RegisterService';
+import history from '../util/history';
 
 class Register extends Component {
   constructor(props) {
@@ -33,7 +35,7 @@ class Register extends Component {
       (error, response) => {
         if (error) console.log(error);
         localStorage.setItem('token', response.data.token);
-        this.props.history.push('/profile');
+        history.push('/profile');
       });
     event.preventDefault();
   }
