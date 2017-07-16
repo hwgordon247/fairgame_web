@@ -7,7 +7,7 @@
     "start": "npm run build; node server/index.js",
     "start-dev": "nodemon server/index.js",
     "build": "webpack -p",
-    "build-dev": "webpack -w",
+    "build-dev": "webpack -w --devtool source-map",
     "build-sass": "node-sass -w ./client/styles/main.scss -o ./client/styles/mainSheet",
     "test": "jest",
     "test:watch": "jest --watch",

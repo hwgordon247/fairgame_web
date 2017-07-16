@@ -1,16 +1,23 @@
-import axios from 'axios';
+import HttpService from './HttpService';
 
 class RegisterService {
   registerUser(email, username, password, cb) {
-    axios.post('http://localhost:5000/register', {
-      username, email, password
-    })
-      .then((response) => {
-        cb(null, response);
-      })
-      .catch((error) => {
+    const requestObject = {
+      method: 'POST',
+      url: 'http://localhost:5000/register',
+      data: { username, email, password }
+    };
+    this._makeRequest(requestObject, cb);
+  }
+
+  _makeRequest(requestObject, cb) {
+    HttpService.request(requestObject, (error, response) => {
+      if (error) {
         cb(error, null);
-      });
+      } else {
+        cb(null, response);
+      }
+    });
   }
 }
 

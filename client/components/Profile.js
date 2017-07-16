@@ -12,7 +12,6 @@ class Profile extends React.Component {
   componentWillMount() {
     UserService.getCurrentUser((err, res) => {
       if (err) console.log(err);
-      console.log(res);
       this.setState({
         username: res.data.username
       });
