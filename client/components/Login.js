@@ -28,7 +28,6 @@ class Login extends React.Component {
         if (error) {
           console.log(error);
         } else {
-          console.log('REEEASSKKK')
           localStorage.setItem('token', response.data.token);
           history.push('/profile');
         }

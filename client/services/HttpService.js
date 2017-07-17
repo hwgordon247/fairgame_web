@@ -5,7 +5,6 @@ class HttpService {
     axios(requestObject).then((response) => {
       cb(null, response);
     }).catch((error) => {
-      console.log('ERRROOROROOROR', error);
       cb(error, null);
     });
   }
