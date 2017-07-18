@@ -20,7 +20,7 @@ ReactDOM.render(
         <Link to="/profile"> Profile </Link>
         <Link to="/register"> Register </Link>
         <Link to="/login"> Login </Link>
-        <button onClick={LogoutService.logout()}> Logout </button>
+        <button onClick={LogoutService.logout}> Logout </button>
         <Route exact path="/" component={Home} />
         <Route path="/profile" component={Profile} />
         <Route path="/register" component={Register} />
