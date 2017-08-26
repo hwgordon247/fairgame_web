@@ -27,21 +27,24 @@ class Home extends Component {
     this.props.setExampleVariable('1 more week');
   }
 
-  render() {
-    const listItems = this.state.items.map((item, index) => {
+  renderListItems() {
+    return this.state.items.map((item, index) => {
       return (
         <div key={index}>
           <div>{item.name}</div>
           <div>{item.description}</div>
+          <div>Owned By: {item.ownedBy.username}</div>
         </div>
       );
     });
+  }
 
+  render() {
     return (
       <div>
         <h1>Fairgame</h1>
         <h4> All dem animals: </h4>
-        <div>{listItems}</div>
+        <div>{this.renderListItems()}</div>
       </div>
     );
   }
