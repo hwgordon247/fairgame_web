@@ -1,5 +1,6 @@
 import HttpService from './HttpService';
 import { apiUrl } from '../config';
+import history from '../util/history';
 
 class ItemService {
   getItems(cb) {
