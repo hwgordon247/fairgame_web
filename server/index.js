@@ -5,7 +5,7 @@ const volleyball = require('volleyball');
 const app = express();
 app.use(volleyball);
 
-app.use(express.static(path.resolve(__dirname, '..', 'client')));
+app.use(express.static(path.resolve(__dirname, '..', 'public')));
 app.use(express.static(path.resolve(__dirname, '..', 'node_modules')));
 // app.use((err, req, res) => {
 //   console.error(err);
@@ -14,7 +14,7 @@ app.use(express.static(path.resolve(__dirname, '..', 'node_modules')));
 // });
 
 app.get('/*', (request, response) => {
-  response.sendFile(path.resolve(__dirname, '..', 'client', 'index.html'));
+  response.sendFile(path.resolve(__dirname, '..', 'public', 'index.html'));
 });
 
 app.listen(process.env.PORT || 3000, () => {

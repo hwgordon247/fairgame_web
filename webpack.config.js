@@ -3,10 +3,10 @@ const LiveReloadPlugin = require('webpack-livereload-plugin');
 const webpack = require('webpack');
 
 module.exports = {
-  entry: './client/index.js',
+  entry: './src/index.js',
   output: {
     filename: 'bundle.js',
-    path: path.resolve(__dirname, 'client/dist')
+    path: path.resolve(__dirname, 'public/dist')
   },
   context: __dirname,
   resolve: {
