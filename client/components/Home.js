@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { setExampleVariable } from '../redux/reducer';
 import ItemService from '../services/ItemService';
+import ItemList from './ItemList';
 
 class Home extends Component {
 
@@ -16,10 +17,13 @@ class Home extends Component {
 
   componentWillMount() {
     ItemService.getItems((error, response) => {
-      if (error) console.log(error);
-      this.setState({
-        items: response.data
-      });
+      if (error) {
+        console.log(error);
+      } else {
+        this.setState({
+          items: response.data
+        });
+      }
     });
   }
 
@@ -27,24 +31,11 @@ class Home extends Component {
     this.props.setExampleVariable('1 more week');
   }
 
-  renderListItems() {
-    return this.state.items.map((item, index) => {
-      return (
-        <div key={index}>
-          <div>{item.name}</div>
-          <div>{item.description}</div>
-          <div>Owned By: {item.ownedBy.username}</div>
-        </div>
-      );
-    });
-  }
-
   render() {
     return (
       <div>
         <h1>Fairgame</h1>
-        <h4> All dem animals: </h4>
-        <div>{this.renderListItems()}</div>
+        <ItemList items={this.state.items} />
       </div>
     );
   }
