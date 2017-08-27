@@ -6,11 +6,11 @@ module.exports = {
   entry: './client/index.js',
   output: {
     filename: 'bundle.js',
-    path: path.resolve(__dirname, 'client/dist'),
+    path: path.resolve(__dirname, 'client/dist')
   },
   context: __dirname,
   resolve: {
-    extensions: ['.js', '.jsx', '.json', '*'],
+    extensions: ['.js', '.jsx', '.json', '*']
   },
   module: {
     rules: [{
@@ -18,24 +18,24 @@ module.exports = {
       exclude: /(node_modules|bower_components)/,
       loader: 'babel-loader',
       options: {
-        presets: ['react', 'es2015', 'stage-0'],
-      },
+        presets: ['react', 'es2015', 'stage-0']
+      }
     },
     {
-      test: /\.scss$/,
+      test: /\.scss|.css$/,
       use: [
         'style-loader',
         'css-loader',
-        'sass-loader',
-      ],
-    }],
+        'sass-loader'
+      ]
+    }]
   },
   plugins: [
     new webpack.DefinePlugin({
       'process.env.COSMIC_BUCKET': JSON.stringify(process.env.COSMIC_BUCKET),
       'process.env.COSMIC_READ_KEY': JSON.stringify(process.env.COSMIC_READ_KEY),
-      'process.env.COSMIC_WRITE_KEY': JSON.stringify(process.env.COSMIC_WRITE_KEY),
+      'process.env.COSMIC_WRITE_KEY': JSON.stringify(process.env.COSMIC_WRITE_KEY)
     }),
-    new LiveReloadPlugin({ appendScriptTag: true }),
-  ],
+    new LiveReloadPlugin({ appendScriptTag: true })
+  ]
 };

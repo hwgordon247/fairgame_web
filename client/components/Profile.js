@@ -36,6 +36,7 @@ class Profile extends React.Component {
         <div>
           Username: {this.state.username}
         </div>
+        <h4>Your animals:</h4>
         <ItemList items={this.state.items} />
       </div>
     );

@@ -11,6 +11,7 @@ import List from './components/List';
 import store from './redux/store';
 import history from './util/history';
 import LogoutService from './services/LogoutService';
+import './index.css';
 
 
 ReactDOM.render(

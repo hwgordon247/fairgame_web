@@ -35,6 +35,7 @@ class Home extends Component {
     return (
       <div>
         <h1>Fairgame</h1>
+        <h4> All dem animals: </h4>
         <ItemList items={this.state.items} />
       </div>
     );
