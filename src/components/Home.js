@@ -16,14 +16,10 @@ class Home extends Component {
   }
 
   componentWillMount() {
-    ItemService.getItems((error, response) => {
-      if (error) {
-        console.log(error);
-      } else {
-        this.setState({
-          items: response.data
-        });
-      }
+    ItemService.getItems((response) => {
+      this.setState({
+        items: response.data
+      });
     });
   }
 

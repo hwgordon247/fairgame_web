@@ -12,20 +12,15 @@ class Profile extends React.Component {
   }
 
   componentWillMount() {
-    UserService.getCurrentUser((err, res) => {
-      if (err) console.log(err);
+    UserService.getCurrentUser((res) => {
       this.setState({
         username: res.data.username
       });
     });
-    ItemService.getUserItems((err, res) => {
-      if (err) {
-        console.log(err);
-      } else {
-        this.setState({
-          items: res.data
-        });
-      }
+    ItemService.getUserItems((res) => {
+      this.setState({
+        items: res.data
+      });
     });
   }
 

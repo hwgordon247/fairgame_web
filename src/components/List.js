@@ -21,15 +21,12 @@ class List extends React.Component {
     this.setState({ description: event.target.value });
   }
 
-  handleSubmit() {
+  handleSubmit(event) {
     ItemService.createItem(this.state.name, this.state.description,
-    (error) => {
-      if (error) {
-        console.log(error);
-      } else {
-        console.log('confirmed');
-      }
+    (response) => {
+      console.log(response);
     });
+    event.preventDefault();
   }
 
   render() {
