@@ -3,14 +3,14 @@ import history from '../util/history';
 import { apiUrl } from '../config';
 
 class UserService {
-  getCurrentUser(cb) {
+  getUser(username, cb) {
     const token = localStorage.getItem('token');
     if (!token) {
       history.push('/login');
     } else {
       const requestObject = {
         method: 'GET',
-        url: `${apiUrl}/user`,
+        url: `${apiUrl}/user/${username}`,
         headers: {
           authtoken: token
         }

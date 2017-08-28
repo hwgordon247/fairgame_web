@@ -25,7 +25,7 @@ ReactDOM.render(
         <Link to="/list"> List </Link>
         <button onClick={LogoutService.logout}> Logout </button>
         <Route exact path="/" component={Home} />
-        <Route path="/profile" component={Profile} />
+        <Route path="/profile/:username" component={Profile} />
         <Route path="/register" component={Register} />
         <Route path="/login" component={Login} />
         <Route path="/list" component={List} />

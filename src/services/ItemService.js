@@ -28,20 +28,12 @@ class ItemService {
     }
   }
 
-  getUserItems(cb) {
-    const token = localStorage.getItem('token');
-    if (!token) {
-      history.push('/login');
-    } else {
-      const requestObject = {
-        method: 'GET',
-        url: `${apiUrl}/user-items`,
-        headers: {
-          authtoken: token
-        }
-      };
-      this._makeRequest(requestObject, cb);
-    }
+  getUserItems(username, cb) {
+    const requestObject = {
+      method: 'GET',
+      url: `${apiUrl}/items/${username}`
+    };
+    this._makeRequest(requestObject, cb);
   }
 
   _makeRequest(requestObject, cb) {

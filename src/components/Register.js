@@ -46,7 +46,7 @@ class Register extends Component {
         <div>
           <input type="text" value={this.state.email} onChange={this.handleEmailChange} />
         </div>
-        Username:
+        Username (NO SPACES):
         <div>
           <input type="text" value={this.state.username} onChange={this.handleUsernameChange} />
         </div>
