@@ -27,7 +27,7 @@ class Login extends React.Component {
       (response) => {
         localStorage.setItem('token', response.data.token);
         localStorage.setItem('username', response.data.username);
-        history.push(`/profile${response.data.username}`);
+        history.push(`/profile/${response.data.username}`);
       });
     event.preventDefault();
   }
