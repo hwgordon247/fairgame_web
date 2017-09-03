@@ -13,11 +13,17 @@ class Profile extends React.Component {
   }
 
   componentWillMount() {
-    UserService.getUser(this.state.username, (res) => {
-      this.setState({
-        username: res.data.username,
-        email: res.data.email
-      });
+    UserService.getUser(this.state.username, (err, res) => {
+      if (err) {
+        this.setState({
+          error: 'User not found.'
+        });
+      } else {
+        this.setState({
+          username: res.data.username,
+          email: res.data.email
+        });
+      }
     });
     ItemService.getUserItems(this.state.username, (res) => {
       this.setState({
@@ -26,7 +32,7 @@ class Profile extends React.Component {
     });
   }
 
-  render() {
+  renderProfile() {
     return (
       <div>
         Profile
@@ -38,6 +44,21 @@ class Profile extends React.Component {
         </div>
         <h4>Your animals:</h4>
         <ItemList items={this.state.items} />
+      </div>
+    );
+  }
+
+  renderError() {
+    return (
+      <div> User not found! </div>
+    );
+  }
+
+  render() {
+    return (
+      <div>
+        {!this.state.error && this.renderProfile()}
+        {this.state.error && this.renderError()}
       </div>
     );
   }

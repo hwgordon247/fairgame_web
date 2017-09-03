@@ -22,9 +22,9 @@ class UserService {
   _makeRequest(requestObject, cb) {
     HttpService.request(requestObject, (error, response) => {
       if (error) {
-        console.log(error);
+        cb(error, null)
       } else {
-        cb(response);
+        cb(null, response);
       }
     });
   }

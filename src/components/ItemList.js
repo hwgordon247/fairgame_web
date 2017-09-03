@@ -1,10 +1,14 @@
 import React from 'react';
 
 class ItemList extends React.Component {
+  itemClick() {
+    console.log('click');
+  }
+
   renderListItems() {
     return this.props.items.map((item, index) => {
       return (
-        <div key={index} className="item">
+        <div key={index} className="item" onClick={this.itemClick}>
           <div>{item.name}</div>
           <div>{item.description}</div>
           <div>
