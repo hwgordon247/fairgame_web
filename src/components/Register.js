@@ -34,7 +34,8 @@ class Register extends Component {
     RegisterService.registerUser(this.state.email, this.state.username, this.state.password,
       (response) => {
         localStorage.setItem('token', response.data.token);
-        history.push('/profile');
+        localStorage.setItem('username', response.data.username);
+        history.push(`/profile${response.data.username}`);
       });
     event.preventDefault();
   }
